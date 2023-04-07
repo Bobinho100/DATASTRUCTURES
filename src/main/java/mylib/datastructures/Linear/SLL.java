@@ -8,6 +8,11 @@ class Node<T>{
         this.data = data;
         this.next = null;
     }
+    public Node(T data, Node<T> next) {
+        this.data = data;
+        this.next = next;
+    }
+    
 }
 
 
@@ -29,6 +34,17 @@ public class SLL <T extends Comparable<T>>{
         this.tail = head;
         this.size = 1;
     }
+    public Node<T> getHead(){
+        return this.head;
+
+    }
+    public Node<T> getTail(){
+        return this.tail;
+    }
+    public int getSize(){
+        return this.size;
+    }
+
 
     public void insertHead(Node<T> node){
         if(head == null){
@@ -51,6 +67,7 @@ public class SLL <T extends Comparable<T>>{
             tail.next = node;
             tail = node;
         }
+        size++;
 
     }
 
@@ -81,6 +98,39 @@ public class SLL <T extends Comparable<T>>{
 
 
     public void sortedInsert(Node<T> node){
+        if (head == null) { // List is empty, insert at head
+            head = node;
+            tail = node;
+            size++;
+            return;
+        }
+        
+        // Check if list is sorted, sort it if not
+        if (!isSorted()) {
+            sort();
+        }
+        
+        // Find position to insert node
+        Node<T> current = head;
+        Node<T> previous = null;
+        while (current != null && node.data.compareTo(current.data) > 0) {
+            previous = current;
+            current = current.next;
+        }
+        
+        // Insert node
+        if (previous == null) { // Insert at head
+            node.next = head;
+            head = node;
+        } else if (current == null) { // Insert at tail
+            previous.next = node;
+            tail = node;
+        } else { // Insert in middle
+            previous.next = node;
+            node.next = current;
+        }
+        
+        size++;
 
     }
 
