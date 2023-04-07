@@ -1,4 +1,4 @@
-package main.java.mylib.datastructures.linear;
+package main.java.mylib.datastructures.Linear;
 
 class Node<T>{
     T data;
@@ -17,19 +17,19 @@ class Node<T>{
 
 
 
-public class LinkedList <T extends Comparable<T>>{
+public class SLL <T extends Comparable<T>>{
     private Node<T> head;
     private Node<T> tail;
     private int size;
 
-    public LinkedList(){
+    public SLL(){
         this.head = null;
         this.tail = null;
         this.size = 0;
 
 
     }
-    public LinkedList(Node<T> head){
+    public SLL(Node<T> head){
         this.head = head;
         this.tail = head;
         this.size = 1;
