@@ -1,7 +1,8 @@
 package main.java.mylib;
 import main.java.mylib.datastructures.heap.MaxHeap;
 import main.java.mylib.datastructures.heap.MinHeap;
-
+import main.java.mylib.datastructures.Trees.BST;
+import main.java.mylib.datastructures.nodes.TNode;
 
 import java.util.Arrays;
 
@@ -49,6 +50,50 @@ public class Main {
         int[] sortedArray2 = MaxHeap.heapsort(array2);
         System.out.println("Sorted array: " + Arrays.toString(sortedArray2)); // Expected output: [8, 5, 2, 1]
 
-    }
+        // Test the BST class
+        System.out.println("\nTesting BST:");
 
+        // Create a new BST object and insert some nodes
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(2);
+        bst.insert(4);
+        bst.insert(6);
+        bst.insert(8);
+
+        // Test printInOrder method
+        System.out.println("In-order traversal:");
+        bst.printInOrder();
+
+        // Test printBF method
+        System.out.println("Breadth-first traversal:");
+        bst.printBF();
+
+        // Test search method
+        TNode node = bst.search(6);
+        if (node != null) {
+            System.out.println("Found node with value " + node.getData());
+        } else {
+            System.out.println("Node not found");
+        }
+
+        // Test delete method
+        bst.delete(7);
+
+        // Test printInOrder method again after deleting a node
+        System.out.println("In-order traversal after deleting node with value 7:");
+        bst.printInOrder();
+
+        // Test insert method again after deleting a node
+        bst.insert(9);
+
+        // Test printBF method again after inserting a node
+        System.out.println("Breadth-first traversal after inserting node with value 9:");
+        bst.printBF();
+
+
+        
+    }
 }
