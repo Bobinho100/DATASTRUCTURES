@@ -1,4 +1,4 @@
-package main.java.mylib.datastructures.linear;
+package main.java.mylib.datastructures.Linear;
 
 class DNode<T> extends Node<T> {
     DNode<T> prev;
@@ -19,22 +19,34 @@ class DNode<T> extends Node<T> {
 
 
 
-public class DoubleLinkedList<T extends Comparable<T>> extends LinkedList<T>{
+public class DoubleLinkedList<T extends Comparable<T>> extends SLL<T>{
     private Node<T> tail;
+    private DNode<T> head;
 
 
     public DoubleLinkedList(){
         super();
         this.tail = null;
+        this.head = null;
     }
     public DoubleLinkedList(Node<T> head){
 
         super(head);
+        this.head = head;
         this.tail = head;
     }
 
     public void insertHead(DNode<T> node){
-        if()
+        node.setNext(this.head);
+        if(this.head != null){
+            ((DNode<T>)this.head).prev = node;
+        }else{
+            this.tail = node;
+        }
+        this.head = node;
+        this.size++;
+        
+    
 
     }
     

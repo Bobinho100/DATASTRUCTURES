@@ -1,6 +1,7 @@
 package main.java.mylib.datastructures.Linear;
+import main.java.mylib.datastructures.nodes.Node;;
 
-class Node<T>{
+/*class Node<T>{
     T data;
     Node<T> next;
 
@@ -13,7 +14,7 @@ class Node<T>{
         this.next = next;
     }
     
-}
+}*/
 
 
 

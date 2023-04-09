@@ -1,4 +1,5 @@
-package main.java.mylib.datastructures.linear;
+package main.java.mylib.datastructures.Linear;
+import main.java.mylib.datastructures.nodes.Node;
 
 
 import org.junit.Test;
@@ -10,7 +11,7 @@ public class LinkedListTest {
 
     @Test
     public void testInsertHead() {
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.insertHead(new Node<Integer>(1));
         assertEquals(1, list.getSize());
         assertEquals(1, (int) list.getHead().data);
@@ -28,7 +29,7 @@ public class LinkedListTest {
     }
     @Test
     public void testInsertTail(){
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.insertTail(new Node<Integer>(1));
         assertEquals(1, list.getSize());
         assertEquals(1, (int) list.getHead().data);
@@ -46,7 +47,7 @@ public class LinkedListTest {
     }
     @Test
     public void testInsert(){
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.insert(new Node<Integer>(1), 0);
         assertEquals(1, list.getSize());
         assertEquals(1,(int) list.getHead().data);
@@ -66,7 +67,7 @@ public class LinkedListTest {
     }
     @Test
     public void testSortedInsert(){
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.sortedInsert(new Node<Integer>(2));
         assertEquals(1, list.getSize());
         assertEquals(2, (int) list.getHead().data);
@@ -91,7 +92,7 @@ public class LinkedListTest {
     @Test
     public void testDeleteHead(){
 
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.insertHead(new Node<Integer>(1));
         list.insertHead(new Node<Integer>(2));
         list.insertHead(new Node<Integer>(3));
@@ -116,7 +117,7 @@ public class LinkedListTest {
     }
     @Test
     public void testDeleteTail(){
-        LinkedList<Integer> list = new LinkedList<Integer>();
+        SLL<Integer> list = new SLL<Integer>();
         list.insertTail(new Node<Integer>(1));
         list.insertTail(new Node<Integer>(2));
         list.insertTail(new Node<Integer>(3));
@@ -142,7 +143,7 @@ public class LinkedListTest {
     }
     @Test
     public void testIsSorted(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SLL<Integer> list = new SLL<>();
 
         list.insert(new Node<Integer>(1), 0);
         list.insert(new Node<Integer>(2), 1);
@@ -162,7 +163,7 @@ public class LinkedListTest {
     }
     @Test
     public void testDeleteNode(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SLL<Integer> list = new SLL<>();
 
         list.insert(new Node<Integer>(1), 0);
         list.insert(new Node<Integer>(2), 1);
@@ -189,7 +190,7 @@ public class LinkedListTest {
     }
     @Test
     public void testIsSort(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SLL<Integer> list = new SLL<>();
 
         list.insert(new Node<Integer>(10), 0);
         list.insert(new Node<Integer>(5), 1);
@@ -202,7 +203,7 @@ public class LinkedListTest {
     }
     @Test
     public void testPrint(){
-        LinkedList<Integer> list = new LinkedList<>();
+        SLL<Integer> list = new SLL<>();
 
         list.insert(new Node<Integer>(1), 0);
         list.insert(new Node<Integer>(2), 1);
