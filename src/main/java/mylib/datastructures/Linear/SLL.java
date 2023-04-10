@@ -22,7 +22,9 @@ public class SLL <T extends Comparable<T>>{
     private Node<T> head;
     private Node<T> tail;
     private int size;
-
+    /**
+     * Constructors
+     */
     public SLL(){
         this.head = null;
         this.tail = null;
@@ -35,6 +37,9 @@ public class SLL <T extends Comparable<T>>{
         this.tail = head;
         this.size = 1;
     }
+    /*
+     * Getters and setters
+     */
     public Node<T> getHead(){
         return this.head;
 
@@ -45,6 +50,19 @@ public class SLL <T extends Comparable<T>>{
     public int getSize(){
         return this.size;
     }
+    public void setHead(Node<T> head){
+        this.head = head;
+    }
+    public void setSize(int size){
+        this.size = size;
+    }
+    public void setTail(Node<T> tail){
+        this.tail = tail;
+    }
+
+    /*
+     * Public methods
+     */
 
 
     public void insertHead(Node<T> node){
@@ -94,6 +112,13 @@ public class SLL <T extends Comparable<T>>{
     
 
         }
+    }
+
+    public boolean isEmpty(){
+        if(head == null || tail == null){
+            return true;
+        }
+        return false;
     }
     
 

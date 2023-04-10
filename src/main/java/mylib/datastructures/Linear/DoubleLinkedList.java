@@ -29,6 +29,12 @@ public class DoubleLinkedList<T extends Comparable<T>>{
     public DNode<T> getTail(){
         return this.tail;
     }
+    public void setHead(DNode<T> head){
+        this.head = head;
+    }
+    public void setTail(DNode<T> tail){
+        this.tail = tail;
+    }
 
     public void insertHead(DNode<T> node){
         if(head == null || tail == null){
