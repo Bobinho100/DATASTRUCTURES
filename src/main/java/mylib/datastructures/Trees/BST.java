@@ -4,7 +4,7 @@ import main.java.mylib.datastructures.nodes.TNode;
 
 public class BST {
 
-    private TNode root;
+    protected TNode root;
 
     // Default constructor
     public BST() {
@@ -13,7 +13,7 @@ public class BST {
 
     // Overload constructor with an integer value
     public BST(int val) {
-        this.root = new TNode(val, 0, null, null, null);
+        this.root = new TNode(val, 0, null, null, null,0);
     }
 
     // Overload constructor with a TNode object
@@ -33,7 +33,7 @@ public class BST {
 
     // Insert a new node with data val into the tree
     public void insert(int val) {
-        TNode newNode = new TNode(val, 0, null, null, null);
+        TNode newNode = new TNode(val, 0, null, null, null,0);
         insert(newNode);
     }
 
@@ -74,7 +74,7 @@ public class BST {
     }
 
     // Delete a given node from the tree
-    private void delete(TNode node) {
+    protected void delete(TNode node) {
         // Case 1: Node has no children
         if (node.getLeft() == null && node.getRight() == null) {
             if (node.getParent() == null) {
