@@ -1,6 +1,7 @@
 package main.java.mylib.datastructures.nodes;
 
 public class TNode {
+
     public int data;
     public TNode left;
     public TNode right;
@@ -94,5 +95,5 @@ public class TNode {
     public void print() {
         System.out.println("Data: " + data + ", Balance: " + balance + ", Height: " + height);
     }
-
+    
 }
