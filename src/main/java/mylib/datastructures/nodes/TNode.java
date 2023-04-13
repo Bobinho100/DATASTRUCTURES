@@ -1,194 +1,98 @@
-package main.java.mylib.datastructures.Trees;
+package main.java.mylib.datastructures.nodes;
 
-import main.java.mylib.datastructures.nodes.TNode;
+public class TNode {
+    public int data;
+    public TNode left;
+    public TNode right;
+    public TNode parent;
+    public int balance;
+    public int height; // new field for storing the height of the node
 
-public class BST {
-
-    protected TNode root;
+    public TNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+        this.height = 1;
+    }
+    
 
     // Default constructor
-    public BST() {
-        this.root = null;
+    public TNode() {
+        this.data = 0;
+        this.left = null;
+        this.right = null;
+        this.parent = null;
+        this.balance = 0;
+        this.height = 1;
     }
 
-    // Overload constructor with an integer value
-    public BST(int val) {
-        this.root = new TNode(val, 0, null, null, null,0);
+    // Overload constructor
+    public TNode(int data, int balance, TNode parent, TNode left, TNode right, int height) {
+        this.data = data;
+        this.balance = balance;
+        this.parent = parent;
+        this.left = left;
+        this.right = right;
+        this.height = height;
     }
 
-    // Overload constructor with a TNode object
-    public BST(TNode obj) {
-        this.root = obj;
+    // Getters and Setters
+    public int getData() {
+        return data;
     }
 
-    // Getter for root
-    public TNode getRoot() {
-        return root;
+    public void setData(int data) {
+        this.data = data;
     }
 
-    // Setter for root
-    public void setRoot(TNode root) {
-        this.root = root;
+    public TNode getLeft() {
+        return left;
     }
 
-    // Insert a new node with data val into the tree
-    public void insert(int val) {
-        TNode newNode = new TNode(val, 0, null, null, null,0);
-        insert(newNode);
+    public void setLeft(TNode left) {
+        this.left = left;
     }
 
-    // Insert a TNode object into the tree
-    public void insert(TNode node) {
-        if (root == null) {
-            root = node;
-        } else {
-            TNode current = root;
-            while (true) {
-                if (node.getData() < current.getData()) {
-                    if (current.getLeft() == null) {
-                        current.setLeft(node);
-                        node.setParent(current);
-                        break;
-                    }
-                    current = current.getLeft();
-                } else {
-                    if (current.getRight() == null) {
-                        current.setRight(node);
-                        node.setParent(current);
-                        break;
-                    }
-                    current = current.getRight();
-                }
-            }
-        }
+    public TNode getRight() {
+        return right;
     }
 
-    // Delete a node with data val from the tree
-    public void delete(int val) {
-        TNode nodeToDelete = search(val);
-        if (nodeToDelete != null) {
-            delete(nodeToDelete);
-        } else {
-            System.out.println("Value not found in tree.");
-        }
+    public void setRight(TNode right) {
+        this.right = right;
     }
 
-    // Delete a given node from the tree
-    protected void delete(TNode node) {
-        // Case 1: Node has no children
-        if (node.getLeft() == null && node.getRight() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = null;
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(null);
-            } else {
-                node.getParent().setRight(null);
-            }
-        }
-        // Case 2: Node has one child
-        else if (node.getLeft() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = node.getRight();
-                node.getRight().setParent(null);
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(node.getRight());
-                node.getRight().setParent(node.getParent());
-            } else {
-                node.getParent().setRight(node.getRight());
-                node.getRight().setParent(node.getParent());
-            }
-        } else if (node.getRight() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = node.getLeft();
-                node.getLeft().setParent(null);
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(node.getLeft());
-                node.getLeft().setParent(node.getParent());
-            } else {
-                node.getParent().setRight(node.getLeft());
-                node.getLeft().setParent(node.getParent());
-            }
-        }
-        // Case 3: Node has two children
-        else {
-            TNode successor = findSuccessor(node);
-            node.setData(successor.getData());
-            delete(successor);
-}
-}
-
-// Helper method to find the successor of a given node
-private TNode findSuccessor(TNode node) {
-    TNode successor = node.getRight();
-    while (successor.getLeft() != null) {
-        successor = successor.getLeft();
-    }
-    return successor;
-}
-
-
-// Search for a node with a given value in the tree
-public TNode search(int val) {
-    TNode current = root;
-    while (current != null) {
-        if (current.getData() == val) {
-            return current;
-        } else if (val < current.getData()) {
-            current = current.getLeft();
-        } else {
-            current = current.getRight();
-        }
-    }
-    return null;
-}
-
-public void printInOrder() {
-    inOrderTraversal(root);
-}
-
-private void inOrderTraversal(TNode node) {
-    if (node != null) {
-        inOrderTraversal(node.getLeft());
-        System.out.print(node.getData() + " ");
-        inOrderTraversal(node.getRight());
-    }
-}
-
-public void printBF() {
-    if (root == null) {
-        return;
+    public TNode getParent() {
+        return parent;
     }
 
-    int height = getHeight(root);
-    for (int i = 1; i <= height; i++) {
-        printLevel(root, i);
-        System.out.println();
+    public void setParent(TNode parent) {
+        this.parent = parent;
     }
-}
 
-private int getHeight(TNode node) {
-    if (node == null) {
-        return 0;
-    } else {
-        int leftHeight = getHeight(node.getLeft());
-        int rightHeight = getHeight(node.getRight());
-        return Math.max(leftHeight, rightHeight) + 1;
+    public int getBalance() {
+        return balance;
     }
-}
 
-private void printLevel(TNode node, int level) {
-    if (node == null) {
-        return;
-    } else if (level == 1) {
-        System.out.print(node.getData() + " ");
-    } else {
-        printLevel(node.getLeft(), level - 1);
-        printLevel(node.getRight(), level - 1);
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
-}
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    // toString method
+    public String toString() {
+        return Integer.toString(data);
+    }
+
+    // print method
+    public void print() {
+        System.out.println("Data: " + data + ", Balance: " + balance + ", Height: " + height);
+    }
 
 }
