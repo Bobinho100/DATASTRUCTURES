@@ -63,72 +63,7 @@ public class BST {
         }
     }
 
-    // Delete a node with data val from the tree
-    public void delete(int val) {
-        TNode nodeToDelete = search(val);
-        if (nodeToDelete != null) {
-            delete(nodeToDelete);
-        } else {
-            System.out.println("Value not found in tree.");
-        }
-    }
-
-    // Delete a given node from the tree
-    protected void delete(TNode node) {
-        // Case 1: Node has no children
-        if (node.getLeft() == null && node.getRight() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = null;
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(null);
-            } else {
-                node.getParent().setRight(null);
-            }
-        }
-        // Case 2: Node has one child
-        else if (node.getLeft() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = node.getRight();
-                node.getRight().setParent(null);
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(node.getRight());
-                node.getRight().setParent(node.getParent());
-            } else {
-                node.getParent().setRight(node.getRight());
-                node.getRight().setParent(node.getParent());
-            }
-        } else if (node.getRight() == null) {
-            if (node.getParent() == null) {
-                // The node is the root
-                root = node.getLeft();
-                node.getLeft().setParent(null);
-            } else if (node.getParent().getLeft() == node) {
-                node.getParent().setLeft(node.getLeft());
-                node.getLeft().setParent(node.getParent());
-            } else {
-                node.getParent().setRight(node.getLeft());
-                node.getLeft().setParent(node.getParent());
-            }
-        }
-        // Case 3: Node has two children
-        else {
-            TNode successor = findSuccessor(node);
-            node.setData(successor.getData());
-            delete(successor);
-}
-}
-
-// Helper method to find the successor of a given node
-private TNode findSuccessor(TNode node) {
-    TNode successor = node.getRight();
-    while (successor.getLeft() != null) {
-        successor = successor.getLeft();
-    }
-    return successor;
-}
-
+ 
 
 // Search for a node with a given value in the tree
 public TNode search(int val) {
@@ -144,6 +79,77 @@ public TNode search(int val) {
     }
     return null;
 }
+
+
+    // Delete a node with a given value from the tree
+    public void delete(int val) {
+        TNode nodeToDelete = search(val);
+        if (nodeToDelete == null) {
+            System.out.println("Value " + val + " not found in the tree");
+            return;
+        }
+
+        // Case 1: The node to be deleted is a leaf node
+        if (nodeToDelete.getLeft() == null && nodeToDelete.getRight() == null) {
+            if (nodeToDelete == root) {
+                root = null;
+            } else if (nodeToDelete.getParent().getLeft() == nodeToDelete) {
+                nodeToDelete.getParent().setLeft(null);
+            } else {
+                nodeToDelete.getParent().setRight(null);
+            }
+        }
+        // Case 2: The node to be deleted has one child
+        else if (nodeToDelete.getLeft() == null || nodeToDelete.getRight() == null) {
+            TNode child;
+            if (nodeToDelete.getLeft() != null) {
+                child = nodeToDelete.getLeft();
+            } else {
+                child = nodeToDelete.getRight();
+            }
+            if (nodeToDelete == root) {
+                root = child;
+                child.setParent(null);
+            } else if (nodeToDelete.getParent().getLeft() == nodeToDelete) {
+                nodeToDelete.getParent().setLeft(child);
+                child.setParent(nodeToDelete.getParent());
+            } else {
+                nodeToDelete.getParent().setRight(child);
+                child.setParent(nodeToDelete.getParent());
+            }
+        }
+
+          // Case 3: The node to be deleted has two children
+          else
+
+          {
+          // Find the minimum node in the right subtree of the node to be deleted
+          TNode minRight = nodeToDelete.getRight();
+          while (minRight.getLeft() != null) {
+          minRight = minRight.getLeft();
+          }
+                  // Copy the value of the minimum node into the node to be deleted
+        nodeToDelete.setData(minRight.getData());
+
+        // Remove the minimum node
+        if (minRight.getRight() == null) {
+            if (minRight.getParent().getLeft() == minRight) {
+                minRight.getParent().setLeft(null);
+            } else {
+                minRight.getParent().setRight(null);
+            }
+        } else {
+            if (minRight.getParent().getLeft() == minRight) {
+                minRight.getParent().setLeft(minRight.getRight());
+            } else {
+                minRight.getParent().setRight(minRight.getRight());
+            }
+            minRight.getRight().setParent(minRight.getParent());
+        }
+    }
+}
+
+
 
 public void printInOrder() {
     inOrderTraversal(root);
