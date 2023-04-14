@@ -45,17 +45,34 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
             super.insertTail(node);
         }
     }
-    @Override
-    public void deleteHead() {
+    //@Override
+    /*public void deleteHead() {
         if (this.getHead() != null && this.getTail() != null) {
             this.getHead().next.previous = this.getTail();
             this.getTail().next = this.getHead().next;
             
         }
         super.deleteHead();
+    }*/
+
+    public void deleteHead() {
+        if (this.getHead() != null) {  // check if the list is not empty
+            setHead(getHead().next);
+            //this.getHead() = this.head.next;  // update the head node
+            if (this.getHead() != null) {
+                this.getHead().previous = this.getTail();  // update the previous node of the new head node
+                this.getTail().next = this.getHead();  // update the next node of the tail node
+            } else {
+                setHead(null);
+                setTail(null);
+                //this.getTail() = null;  // if the list is now empty, set the tail to null
+            }
+            setSize(getSize() - 1);
+            //this.size--;  // decrement the size of the list
+        }
     }
 
-    @Override
+    /*@Override
     public void deleteTail() {
         if (this.getHead() != null && this.getTail() != null) {
             this.getTail().previous.next = this.getHead();
@@ -63,7 +80,22 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
             
         }
         super.deleteTail();
-    }
+    }*/
+  
+    public void deleteTail() {
+        if (this.getHead() != null && this.getTail() != null) {
+            if (this.getHead() == this.getTail()) { // if there is only one node in the list
+                this.setHead(null);
+                this.setTail(null);
+            } else {
+                DNode<T> newTail = this.getTail().previous;
+                newTail.next = this.getHead();
+                this.getHead().previous = newTail;
+                this.setTail(newTail);
+            }
+            super.deleteTail();
+        }
+    }  
     public void Insert(DNode<T> node, int position) {
         if (position < 1 || position > getSize() + 1) {
             System.out.println("Invalid position. Insertion failed.");

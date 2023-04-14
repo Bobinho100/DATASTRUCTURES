@@ -185,6 +185,7 @@ public class SLL <T extends Comparable<T>>{
         }
     }
 
+
     public void deleteTail(){
         if(tail != null){
             if(head == tail){
