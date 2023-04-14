@@ -170,7 +170,7 @@ public void setRoot(TNode newRoot) {
 
 
 
-private TNode insert(TNode node, int val) {
+public TNode insert(TNode node, int val) {
     if (node == null) {
         return new TNode(val);
     }
