@@ -1,15 +1,16 @@
 package main.java.mylib.datastructures.Linear;
-import main.java.mylib.datastructures.nodes.Node;;
+import main.java.mylib.datastructures.nodes.DNode;
+//mport main.java.mylib.datastructures.nodes.
 
-/*class Node<T>{
+/*class DNode<T>{
     T data;
-    Node<T> next;
+    DNode<T> next;
 
-    public Node(T data){
+    public DNode(T data){
         this.data = data;
         this.next = null;
     }
-    public Node(T data, Node<T> next) {
+    public DNode(T data, DNode<T> next) {
         this.data = data;
         this.next = next;
     }
@@ -19,8 +20,8 @@ import main.java.mylib.datastructures.nodes.Node;;
 
 
 public class SLL <T extends Comparable<T>>{
-    private Node<T> head;
-    private Node<T> tail;
+    private DNode<T> head;
+    private DNode<T> tail;
     private int size;
     /**
      * Constructors
@@ -32,7 +33,7 @@ public class SLL <T extends Comparable<T>>{
 
 
     }
-    public SLL(Node<T> head){
+    public SLL(DNode<T> head){
         this.head = head;
         this.tail = head;
         this.size = 1;
@@ -40,23 +41,23 @@ public class SLL <T extends Comparable<T>>{
     /*
      * Getters and setters
      */
-    public Node<T> getHead(){
+    public DNode<T> getHead(){
         return this.head;
 
     }
-    public Node<T> getTail(){
+    public DNode<T> getTail(){
         return this.tail;
     }
     public int getSize(){
         return this.size;
     }
-    public void setHead(Node<T> head){
+    public void setHead(DNode<T> head){
         this.head = head;
     }
     public void setSize(int size){
         this.size = size;
     }
-    public void setTail(Node<T> tail){
+    public void setTail(DNode<T> tail){
         this.tail = tail;
     }
 
@@ -65,7 +66,7 @@ public class SLL <T extends Comparable<T>>{
      */
 
 
-    public void insertHead(Node<T> node){
+    public void insertHead(DNode<T> node){
         if(head == null){
             head = node;
             tail = node;
@@ -78,7 +79,7 @@ public class SLL <T extends Comparable<T>>{
         size++;
 
     }
-    public void insertTail(Node<T> node){
+    public void insertTail(DNode<T> node){
         if(head == null){
             head = node;
             tail = node;
@@ -90,9 +91,9 @@ public class SLL <T extends Comparable<T>>{
 
     }
 
-    public void insert(Node<T> node, int position){
+    public void insert(DNode<T> node, int position){
 
-        Node<T> temp;
+        DNode<T> temp;
         temp = head;
         if (position <= 0){
             insertHead(node);
@@ -123,7 +124,7 @@ public class SLL <T extends Comparable<T>>{
     
 
 
-    public void sortedInsert(Node<T> node){
+    public void sortedInsert(DNode<T> node){
         if (head == null) { // List is empty, insert at head
             head = node;
             tail = node;
@@ -137,8 +138,8 @@ public class SLL <T extends Comparable<T>>{
         }
         
         // Find position to insert node
-        Node<T> current = head;
-        Node<T> previous = null;
+        DNode<T> current = head;
+        DNode<T> previous = null;
         while (current != null && node.data.compareTo(current.data) > 0) {
             previous = current;
             current = current.next;
@@ -164,7 +165,7 @@ public class SLL <T extends Comparable<T>>{
         if (head == null || head.next == null) {
             return true;
         }
-        Node<T> current = head;
+        DNode<T> current = head;
         while (current.next != null) {
             if (current.data.compareTo(current.next.data) > 0) {
                 return false;
@@ -191,7 +192,7 @@ public class SLL <T extends Comparable<T>>{
             if(head == tail){
                 head = tail = null;
             }else {
-                Node<T> temp= head;
+                DNode<T> temp= head;
                 while (temp.next != tail){
                     temp = temp.next;
 
@@ -202,7 +203,7 @@ public class SLL <T extends Comparable<T>>{
         }
         size--;
     }
-    public void delete(Node<T> node) {
+    public void delete(DNode<T> node) {
         if (head == null) {
             return;
         }
@@ -214,7 +215,7 @@ public class SLL <T extends Comparable<T>>{
             }
             return;
         }
-        Node<T> temp = head;
+        DNode<T> temp = head;
         while (temp.next != null) {
             if (temp.next == node) {
                 temp.next = node.next;
@@ -233,18 +234,18 @@ public class SLL <T extends Comparable<T>>{
             return; // already sorted
         }
     
-        Node<T> sortedHead = head;
-        Node<T> unsorted = head.next;
+        DNode<T> sortedHead = head;
+        DNode<T> unsorted = head.next;
     
         sortedHead.next = null; // the sorted list only contains the head node
     
         while (unsorted != null) {
-            Node<T> current = unsorted;
+            DNode<T> current = unsorted;
             unsorted = unsorted.next;
     
             // Find the position to insert the current node in the sorted list
-            Node<T> prev = null;
-            Node<T> temp = sortedHead;
+            DNode<T> prev = null;
+            DNode<T> temp = sortedHead;
             while (temp != null && current.data.compareTo(temp.data) > 0) {
                 prev = temp;
                 temp = temp.next;
@@ -262,7 +263,7 @@ public class SLL <T extends Comparable<T>>{
     
         head = sortedHead;
         // Update the tail of the list
-        Node<T> temp = head;
+        DNode<T> temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
@@ -272,6 +273,17 @@ public class SLL <T extends Comparable<T>>{
         head = null;
         tail = null;
         size = 0;
+    }
+
+    public DNode<T> search(DNode<T> node) {
+        DNode<T> current = head;
+        while (current != null) {
+            if (current.equals(node)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
     }
 
     public void print() {
@@ -284,7 +296,7 @@ public class SLL <T extends Comparable<T>>{
         }
     
         System.out.print("List content: ");
-        Node<T> current = head;
+        DNode<T> current = head;
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;

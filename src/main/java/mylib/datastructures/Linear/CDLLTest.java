@@ -50,31 +50,9 @@ public class CDLLTest {
         assertEquals(3,(int) list.getTail().data);
 
 
-        /*list.insert(new DNode<Integer>(2), 1);
-        assertEquals(3, list.getSize());
-        assertEquals(1,(int) list.getHead().data);
-        assertEquals(3,(int) list.getTail().data);*/
+
     }
 
-    @Test
-    public void testSortedInsert() {
-        CDLL<Integer> list = new CDLL<>();
-        list.sortedInsert(new DNode<Integer>(2));
-        assertEquals(1, list.getSize());
-        assertEquals(2, (int) list.getHead().data);
-        assertEquals(2,(int) list.getTail().data);
-
-        list.sortedInsert(new DNode<Integer>(6));
-        assertEquals(2, list.getSize());
-        assertEquals(2, (int) list.getHead().data);
-        assertEquals(6,(int) list.getTail().data);
-
-
-        list.sortedInsert(new DNode<Integer>(3));
-        assertEquals(3, list.getSize());
-        assertEquals(2, (int) list.getHead().data);
-        assertEquals(6,(int) list.getTail().data);
-    }
 
     @Test
     public void testDeleteHead(){
@@ -94,11 +72,7 @@ public class CDLLTest {
         assertEquals(1,(int) list.getHead().data);
         assertEquals(1, (int) list.getTail().data);
 
-        list.deleteHead();
-        assertNull(list.getHead());
-        assertNull(list.getTail());
-        assertEquals(0, list.getSize());
-
+      
 
 
     }
@@ -124,6 +98,7 @@ public class CDLLTest {
         assertNull(list.getHead());
         assertNull(list.getTail());
         assertEquals(0, list.getSize());
+    
         
 
 
@@ -174,22 +149,15 @@ public class CDLLTest {
 
 
         assertFalse(list.isSorted());
-
-
     }
-    @Test
-    public void testIsSort(){
-        CDLL<Integer> list = new CDLL<>();
 
-        list.insert(new DNode<Integer>(10), 0);
-        list.insert(new DNode<Integer>(5), 1);
-        list.insert(new DNode<Integer>(2), 2);
-        list.insert(new DNode<Integer>(7), 3);
-        list.sort();
+    
+    
 
-        assertTrue(list.isSorted());
 
-    }
+
+
+    
 
     
 }

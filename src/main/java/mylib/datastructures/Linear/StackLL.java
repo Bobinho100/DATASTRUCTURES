@@ -1,6 +1,6 @@
 package main.java.mylib.datastructures.Linear;
+//import main.java.mylib.datastructures.DNodes.DDNode;
 import main.java.mylib.datastructures.nodes.DNode;
-import main.java.mylib.datastructures.nodes.Node;;
 
 public class StackLL<T extends Comparable<T>>  extends SLL<T>{ 
 
@@ -8,20 +8,20 @@ public class StackLL<T extends Comparable<T>>  extends SLL<T>{
         super();
     }
     @Override
-    public void insertTail(Node<T> node){}
+    public void insertTail(DNode<T> DNode){}
     public void deleteTail(){}
 
 
     
-    public void push(Node<T> node){
-        super.insertHead(node);
+    public void push(DNode<T> DNode){
+        super.insertHead(DNode);
     
     }
-    public void Insert(Node<T> node, int position){}
-    public void SortedInsert(Node<T> node){}
-    public void delete(Node<T> node){}
+    public void Insert(DNode<T> DNode, int position){}
+    public void SortedInsert(DNode<T> DNode){}
+    public void delete(DNode<T> DNode){}
 
-    public Node<T> peek(){
+    public DNode<T> peek(){
         return super.getHead();
     }
     public void pop(){
@@ -30,8 +30,8 @@ public class StackLL<T extends Comparable<T>>  extends SLL<T>{
     public int size(){
         return this.getSize();
     }
-    public Node<T> search(T data) {
-        Node<T> current = getHead();
+    public DNode<T> search(T data) {
+        DNode<T> current = getHead();
         while (current != null) {
             if (current.data.equals(data)) {
                 return current;

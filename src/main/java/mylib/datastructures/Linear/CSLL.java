@@ -1,6 +1,6 @@
 package main.java.mylib.datastructures.Linear;
 
-import main.java.mylib.datastructures.nodes.Node;
+import main.java.mylib.datastructures.nodes.DNode;
 
 public class CSLL<T extends Comparable<T>>  extends SLL<T> {
     
@@ -10,7 +10,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         
     }
    
-    public CSLL(Node<T> head){
+    public CSLL(DNode<T> head){
         super(head);
         head = head.next;
         
@@ -22,51 +22,51 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         
     }
     @Override
-    public void insertHead(Node<T> node){
+    public void insertHead(DNode<T> DNode){
         if(this.getHead() == null){
-            super.insertHead(node);
-            node.next = node;
+            super.insertHead(DNode);
+            DNode.next = DNode;
             
 
 
         }else{
-            node.next = this.getHead();
-            this.getTail().next = node;
-            super.insertHead(node);
+            DNode.next = this.getHead();
+            this.getTail().next = DNode;
+            super.insertHead(DNode);
         }
         
 
     }
     @Override
 
-    public void insertTail(Node<T> node){
+    public void insertTail(DNode<T> DNode){
         if(this.getHead()  == null){
-            super.insertTail(node);
-            node.next = node;
+            super.insertTail(DNode);
+            DNode.next = DNode;
 
         }else {
-            node.next = this.getHead();
-            this.getTail().next = node;
-            super.insertTail(node);
+            DNode.next = this.getHead();
+            this.getTail().next = DNode;
+            super.insertTail(DNode);
         }
         //this.setSize(this.getSize() + 1);
 
     }
-    public void insert(Node<T> node, int position){
+    public void insert(DNode<T> DNode, int position){
         if (position < 0 || position > this.getSize()){
             throw new IndexOutOfBoundsException("Invalid position");
         }
         if (position == 0){
-            insertHead(node);
+            insertHead(DNode);
         }else if(position == this.getSize()){
-            insertTail(node);
+            insertTail(DNode);
         }else {
-            Node<T> current = this.getHead();
+            DNode<T> current = this.getHead();
             for(int i = 0; i < position -1 ;i++){
                 current = current.next;
             }
-            node.next = current.next;
-            current.next = node;
+            DNode.next = current.next;
+            current.next = DNode;
             this.setSize(getSize() + 1);
         }
         
@@ -113,7 +113,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
     @Override
     public void deleteTail(){
         if(this.getHead() != null && this.getTail() != null){
-            Node<T> current = this.getHead();
+            DNode<T> current = this.getHead();
             while(current.next != this.getTail()){
                 current = current.next;
             }
@@ -124,8 +124,8 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         this.setSize(getSize()-1);
     }
 
-    public void sortedInsert(Node<T> node) {
-        if (node == null) {
+    public void sortedInsert(DNode<T> DNode) {
+        if (DNode == null) {
             return;
         }
     
@@ -136,17 +136,17 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
     
         // Special case if list is empty
         if (this.getHead() == null) {
-            this.insertHead(node);
+            this.insertHead(DNode);
             return;
-        }else if (this.getHead().data.compareTo(node.data) >= 0) {
-            super.insertHead(node);
+        }else if (this.getHead().data.compareTo(DNode.data) >= 0) {
+            super.insertHead(DNode);
         } else {
-            Node<T> current = this.getHead();
-            while (current.next != null && current.next.data.compareTo(node.data) < 0) {
+            DNode<T> current = this.getHead();
+            while (current.next != null && current.next.data.compareTo(DNode.data) < 0) {
                 current = current.next;
             }
-            node.next = current.next;
-            current.next = node;
+            DNode.next = current.next;
+            current.next = DNode;
             this.setSize(this.getSize() + 1);
         }
         
@@ -155,7 +155,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         
     }
     public boolean isSorted() {
-        Node<T> current = getHead();
+        DNode<T> current = getHead();
         while (current.next != getHead()) {
             if (current.data.compareTo(current.next.data) > 0) {
                 return false;
@@ -164,10 +164,10 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         }
         return true;
     }
-    public Node<T> search(Node<T> node) {
-        Node<T> curr = this.getHead();
+    public DNode<T> search(DNode<T> DNode) {
+        DNode<T> curr = this.getHead();
         while (curr != null) {
-            if (curr.equals(node)) {
+            if (curr.equals(DNode)) {
                 return curr;
             }
             curr = curr.next;
@@ -175,24 +175,24 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         return null;
     }
 
-    public void delete(Node<T> node) {
+    public void delete(DNode<T> DNode) {
         if (this.getHead() == null) {
             return;
         }
         
-        if (node == this.getHead()) {
+        if (DNode == this.getHead()) {
             this.deleteHead();
             return;
         }
         
-        Node<T> curr = this.getHead();
-        while (curr.next != this.getHead() && curr.next != node) {
+        DNode<T> curr = this.getHead();
+        while (curr.next != this.getHead() && curr.next != DNode) {
             curr = curr.next;
         }
         
-        if (curr.next == node) {
-            curr.next = node.next;
-            node.next = null;
+        if (curr.next == DNode) {
+            curr.next = DNode.next;
+            DNode.next = null;
             this.setSize(this.getSize() - 1);
         }
     }
@@ -202,9 +202,9 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
             return;
         }
         
-        Node<T> curr = this.getHead().next;
+        DNode<T> curr = this.getHead().next;
         while (curr != null) {
-            Node<T> temp = curr.next;
+            DNode<T> temp = curr.next;
             sortedInsert(curr);
             curr = temp;
         }
@@ -213,9 +213,9 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         if (this.getHead() == null) {
             return;
         }
-        Node<T> curr = this.getHead();
+        DNode<T> curr = this.getHead();
         while (curr.next!= null) {
-            Node<T> temp = curr;
+            DNode<T> temp = curr;
             curr = curr.next;
             temp.next = null;
         }
@@ -237,7 +237,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         }
     
         // Print the list content
-        Node<T> curr = this.getHead();
+        DNode<T> curr = this.getHead();
         System.out.print("List content: ");
         while (curr != null) {
             System.out.print(curr.data + " ");
@@ -245,8 +245,8 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
         }
         System.out.println();
     }
-    
-    
+
+ 
     
     
 

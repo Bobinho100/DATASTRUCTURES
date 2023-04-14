@@ -15,5 +15,8 @@ public class DNode<T> {
     public DNode(){
 
     }
-    
+    public DNode(T data, DNode<T> next) {
+        this.data = data;
+        this.next = next;
+    }
 }

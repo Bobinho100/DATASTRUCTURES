@@ -82,7 +82,7 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
         super.deleteTail();
     }*/
   
-    public void deleteTail() {
+    /*public void deleteTail() {
         if (this.getHead() != null && this.getTail() != null) {
             if (this.getHead() == this.getTail()) { // if there is only one node in the list
                 this.setHead(null);
@@ -95,7 +95,26 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
             }
             super.deleteTail();
         }
-    }  
+    }  */
+
+
+public void deleteTail() {
+    if (getHead() == null || getTail() == null) {
+        return; // list is empty
+    }
+    
+    if (getHead() == getTail()) { // if there is only one node in the list
+        setHead(null);
+        setTail(null);
+    } else {
+        DNode<T> newTail = getTail().previous;
+        newTail.next = getHead();
+        getHead().previous = newTail;
+        setTail(newTail);
+    }
+    
+    setSize(getSize() - 1);
+}
     public void Insert(DNode<T> node, int position) {
         if (position < 1 || position > getSize() + 1) {
             System.out.println("Invalid position. Insertion failed.");
@@ -151,6 +170,8 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
         
         this.setSize(getSize()+ 1);
     }
+
+    
     
     public boolean isSorted() {
         DNode<T> current = getHead();

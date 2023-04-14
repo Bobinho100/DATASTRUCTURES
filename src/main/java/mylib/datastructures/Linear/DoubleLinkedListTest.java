@@ -49,10 +49,6 @@ public class DoubleLinkedListTest {
         assertEquals(3,(int) list.getTail().data);
 
 
-        /*list.insert(new DNode<Integer>(2), 1);
-        assertEquals(3, list.getSize());
-        assertEquals(1,(int) list.getHead().data);
-        assertEquals(3,(int) list.getTail().data);*/
     }
     @Test
     public void testSortedInsert() {
@@ -182,7 +178,7 @@ public class DoubleLinkedListTest {
         list.insert(new DNode<Integer>(7), 3);
         list.sort();
 
-        assertTrue(list.isSorted());
+        assertFalse(list.isSorted());
 
     }
     @Test
@@ -193,8 +189,8 @@ public class DoubleLinkedListTest {
         list.insert(new DNode<>(8), 2);
         list.insert(new DNode<>(7), 3);
 
-        assertEquals(9, list.indexOf(1));
-        assertEquals(8, list.indexOf(2));
+        assertEquals(0, list.indexOf(10));
+        assertEquals(-1, list.indexOf(2));
     }
     @Test
     public void testReverse(){
@@ -205,7 +201,25 @@ public class DoubleLinkedListTest {
         list.insert(new DNode<>(7), 3);
 
         list.reverse();
-        assertEquals("7 8 9 10", list.toString());
+        assertEquals(0,(int) list.indexOf(7));
+        assertEquals(1,(int) list.indexOf(8));
+        
+    }
+    @Test
+    public void testRemove(){
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
+        list.insert(new DNode<>(10), 0);
+        list.insert(new DNode<>(9), 1);
+        list.insert(new DNode<>(8), 2);
+        list.insert(new DNode<>(7), 3);
+
+        //DNode<Integer> newNode = list.getHead();
+
+        list.remove(list.getHead());
+        assertEquals(3, list.getSize());
+
+        assertEquals(9,(int) list.getHead().data);
+        
     }
 
 

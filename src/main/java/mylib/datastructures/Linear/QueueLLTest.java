@@ -1,5 +1,5 @@
 package main.java.mylib.datastructures.Linear;
-import main.java.mylib.datastructures.nodes.Node;
+import main.java.mylib.datastructures.nodes.DNode;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,11 +11,11 @@ public class QueueLLTest {
     @Test
     public void testEnqueue(){
         QueueLL<Integer> queue = new QueueLL<>();
-        queue.enqueue(new Node<>(10));
-        queue.enqueue(new Node<>(9));
-        queue.enqueue(new Node<>(8));
-        queue.enqueue(new Node<>(7));
-        queue.enqueue(new Node<>(6));
+        queue.enqueue(new DNode<>(10));
+        queue.enqueue(new DNode<>(9));
+        queue.enqueue(new DNode<>(8));
+        queue.enqueue(new DNode<>(7));
+        queue.enqueue(new DNode<>(6));
 
         assertEquals(5, queue.size());
         assertEquals(10,(int) queue.peek().data);
@@ -24,11 +24,11 @@ public class QueueLLTest {
     public void testDequeue(){
 
         QueueLL<Integer> queue = new QueueLL<>();
-        queue.enqueue(new Node<>(10));
-        queue.enqueue(new Node<>(9));
-        queue.enqueue(new Node<>(8));
-        queue.enqueue(new Node<>(7));
-        queue.enqueue(new Node<>(6));
+        queue.enqueue(new DNode<>(10));
+        queue.enqueue(new DNode<>(9));
+        queue.enqueue(new DNode<>(8));
+        queue.enqueue(new DNode<>(7));
+        queue.enqueue(new DNode<>(6));
 
         queue.dequeue();
         queue.dequeue();

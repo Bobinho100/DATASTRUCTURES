@@ -1,5 +1,5 @@
 package main.java.mylib.datastructures.Linear;
-import main.java.mylib.datastructures.nodes.Node;;
+import main.java.mylib.datastructures.nodes.DNode;
 
 public class QueueLL<T extends Comparable<T>>  extends SLL<T> {
 
@@ -7,14 +7,14 @@ public class QueueLL<T extends Comparable<T>>  extends SLL<T> {
         super();
     }
 
-    public void enqueue(Node<T> node){
-        super.insertTail(node);
+    public void enqueue(DNode<T> DNode){
+        super.insertTail(DNode);
     }
     public void dequeue(){
         super.deleteHead();
     }
 
-    public Node<T> peek(){
+    public DNode<T> peek(){
         return super.getHead();
 
     }
@@ -28,8 +28,8 @@ public class QueueLL<T extends Comparable<T>>  extends SLL<T> {
         super.print();
     }
     
-    public void insertHead(Node<T> node){}
+    public void insertHead(DNode<T> DNode){}
 
-    public void delete(Node<T> node){}
+    public void delete(DNode<T> DNode){}
     
 }
