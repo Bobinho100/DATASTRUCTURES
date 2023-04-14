@@ -259,30 +259,43 @@ private TNode findSuccessor(TNode node) {
     return successor;
 }
 
-    public static void main(String[] args) {
-        AVL tree = new AVL();
-        tree.insert(5);
-        tree.insert(3);
-        tree.insert(7);
-        tree.insert(2);
-        tree.insert(4);
-        tree.insert(6);
-        tree.insert(8);
-
-        // Use inherited search method
-        TNode node = tree.search(6);
-        if (node != null) {
-            System.out.println("Node with value 6 found in the tree");
+public TNode Search(int val) {
+    TNode curr = root;
+    while (curr != null) {
+        if (curr.getData() == val) {
+            return curr;
+        } else if (val < curr.getData()) {
+            curr = curr.left;
         } else {
-            System.out.println("Node with value 6 not found in the tree");
+            curr = curr.right;
         }
-
-        // Use inherited printInOrder method
-        System.out.println("In-order traversal of the tree:");
-        tree.printInOrder();
-
-        // Use inherited printBF method
-        System.out.println("Breadth-first traversal of the tree:");
-        tree.printBF();
     }
+    return null;
+}
+
+public void printInOrder() {
+    inOrderTraversal(root);
+}
+
+private void inOrderTraversal(TNode node) {
+    if (node != null) {
+        inOrderTraversal(node.left);
+        System.out.print(node.getData() + " ");
+        inOrderTraversal(node.right);
+    }
+}
+
+public void printBF() {
+    printBF(root);
+}
+
+private void printBF(TNode node) {
+    if (node != null) {
+        printBF(node.left);
+        System.out.print(node.getData() + "(" + getBalanceFactor(node) + ") ");
+        printBF(node.right);
+    }
+}
+
+
 }
