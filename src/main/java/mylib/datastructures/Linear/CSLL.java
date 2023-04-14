@@ -34,7 +34,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
             this.getTail().next = node;
             super.insertHead(node);
         }
-        this.setSize(this.getSize() + 1);
+        
 
     }
     @Override
@@ -49,7 +49,7 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
             this.getTail().next = node;
             super.insertTail(node);
         }
-        this.setSize(this.getSize() + 1);
+        //this.setSize(this.getSize() + 1);
 
     }
     public void insert(Node<T> node, int position){
@@ -80,13 +80,35 @@ public class CSLL<T extends Comparable<T>>  extends SLL<T> {
 
 
 
-    @Override
+    /*@Override
     public void deleteHead(){
-        if(this.getHead() != null && this.getTail() != null){
-            this.getTail().next = this.getHead().next;
+        if(this.getHead() != null){
+            if (this.getHead() == this.getTail()) {
+                this.setTail(null);
+            }
         }
         super.deleteHead();
-        this.setSize(getSize() - 1);
+        
+    }*/
+
+    public void deleteHead(){
+        if (this.getHead() != null){
+            if (this.getHead() == this.getTail()) {
+                setHead(null) ;
+                setTail(null);
+                //this.getHead() = null;
+                //this.setTail(null);
+                //this.getTail() = null;
+            } else {
+                setHead(getHead().next);
+                
+                //this.getHead() = head.next;
+                this.getTail().next = this.getHead();
+                //tail.next = head;
+            }
+            setSize(getSize() - 1);
+            //size--;
+        }
     }
     @Override
     public void deleteTail(){

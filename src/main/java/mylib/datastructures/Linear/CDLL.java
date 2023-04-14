@@ -135,24 +135,18 @@ public class CDLL<T extends Comparable<T>>  extends DoubleLinkedList<T>{
         
         return sorted;
     }
-    public DNode<T> search(DNode<T> node) {
-        if (node == null) {
+    
+    public T search(DNode<T> node) {
+        if (node == null || getHead() == null) {
             return null;
         }
         DNode<T> curr = getHead();
-        if (curr == null) {
-            return null;
-        }
-        if (node.data.equals(curr.data)) {
-            return curr;
-        }
-        curr = curr.next;
-        while (curr != getHead()) {
-            if (node.data.equals(curr.data)) {
-                return curr;
+        do {
+            if (node.equals(curr)) {
+                return curr.data;
             }
             curr = curr.next;
-        }
+        } while (curr != getHead());
         return null;
     }
     public void Delete(DNode<T> node) {
