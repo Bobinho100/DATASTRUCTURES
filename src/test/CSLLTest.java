@@ -1,4 +1,4 @@
-package main.java.mylib.datastructures.Linear;
+package test;
 
 
 import java.io.ByteArrayOutputStream;
@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import main.java.mylib.datastructures.Linear.CSLL;
+import main.java.mylib.datastructures.Linear.SLL;
 import main.java.mylib.datastructures.nodes.DNode;
 
 public class CSLLTest {

@@ -1,4 +1,5 @@
-package main.java.mylib.datastructures.Trees;
+package test;
+import main.java.mylib.datastructures.Trees.AVL;
 import main.java.mylib.datastructures.nodes.TNode;
 
 import org.junit.*;

@@ -1,4 +1,5 @@
-package main.java.mylib.datastructures.Linear;
+package test;
+import main.java.mylib.datastructures.Linear.SLL;
 import main.java.mylib.datastructures.nodes.DNode;
 
 

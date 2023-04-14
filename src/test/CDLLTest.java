@@ -1,6 +1,7 @@
-package main.java.mylib.datastructures.Linear;
+package test;
 
 
+import main.java.mylib.datastructures.Linear.CDLL;
 import main.java.mylib.datastructures.nodes.DNode;
 
 import static org.junit.Assert.*;

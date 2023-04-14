@@ -1,9 +1,10 @@
-package main.java.mylib.datastructures.Linear;
+package test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import main.java.mylib.datastructures.Linear.StackLL;
 import main.java.mylib.datastructures.nodes.DNode;
 
 public class StackLLTest {

@@ -1,4 +1,5 @@
-package main.java.mylib.datastructures.Linear;
+package test;
+import main.java.mylib.datastructures.Linear.QueueLL;
 import main.java.mylib.datastructures.nodes.DNode;
 
 import static org.junit.Assert.assertEquals;

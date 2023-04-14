@@ -1,4 +1,5 @@
-package main.java.mylib.datastructures.Trees;
+package test;
+import main.java.mylib.datastructures.Trees.BST;
 import main.java.mylib.datastructures.nodes.*;
 
 import static org.junit.Assert.*;
