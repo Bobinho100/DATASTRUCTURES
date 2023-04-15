@@ -1,0 +1,22 @@
+package mylib.datastructures.nodes;
+
+public class DNode<T> {
+    public T data;
+    public DNode<T> next;
+    public DNode<T> previous;
+    
+
+    public DNode(T data){
+        this.data = data;
+        this.next = null;
+        this.previous = null;
+
+    }
+    public DNode(){
+
+    }
+    public DNode(T data, DNode<T> next) {
+        this.data = data;
+        this.next = next;
+    }
+}
